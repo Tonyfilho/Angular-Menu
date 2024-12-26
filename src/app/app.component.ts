@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
+import { Component, signal } from '@angular/core';
 import { MainComponent } from "./main/main.component";
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RightSidebarComponent, MainComponent],
+  imports: [ RightSidebarComponent, MainComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'menu';
+  isRightSidebarCollapsed = signal<boolean>(false);
+
+  changeIsleftSidebarCollapse(isRightSidebarCollapsed : boolean) {
+   this.isRightSidebarCollapsed.set(isRightSidebarCollapsed);
+  }
+  
 }
